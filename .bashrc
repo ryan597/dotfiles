@@ -116,24 +116,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/ryan/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/ryan/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/ryan/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/ryan/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# Waveobs variable
-export WF_API_TOKEN="f6978e8575ce45619bacddccab19dc5f"
-
-export BASILISK=/home/ryan/Documents/basiliskious/basilisk/src
-export PATH=$PATH:
 . "$HOME/.cargo/env"
