@@ -128,5 +128,7 @@ Changes will appear when you open a new shell environment.
 For some common command line utilities I have install Rust replacements. These are bat (cat), exa (ls) and fdfind (find). I have also created aliases for these inside the `config.fish` file.
 
 [bat](https://github.com/sharkdp/bat)
+
 [exa](https://github.com/ogham/exa)
+
 [fd-find](https://github.com/sharkdp/fd)
