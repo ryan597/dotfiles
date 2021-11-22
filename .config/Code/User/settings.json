@@ -1,0 +1,81 @@
+{
+    // Editor settings
+    "breadcrumbs.enabled": true,
+    "breadcrumbs.filePath": "on",
+    "editor.renderWhitespace": "boundary",
+    "editor.renderControlCharacters": true,
+    "editor.fontSize": 13,
+    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.tabCompletion": "on",
+    "editor.wrappingIndent": "indent",
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.guides.bracketPairs": "active",
+    "editor.rulers": [
+        79,
+        120
+    ],
+    "files.trimTrailingWhitespace": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.sideBar.location": "right",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+
+    // Python settings
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.pycodestyleEnabled": true,
+    "python.linting.enabled": true,
+    "jupyter.sendSelectionToInteractiveWindow": true,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "jupyter.askForKernelRestart": false,
+
+    // Markdown settings
+    "markdownlint.config": {
+        "MD013": false,
+        "MD007": {
+            "indent": 4
+        },
+        "MD046": false,
+        "no-inline-html": {
+            "allowed_elements": [
+                "details",
+                "summary"
+            ]
+        }
+    },
+
+    // C++ settings
+    "C_Cpp.default.cppStandard": "c++20",
+    "C_Cpp.default.cStandard": "c17",
+    "C_Cpp.autocompleteAddParentheses": true,
+    "C_Cpp.intelliSenseUpdateDelay": 1000,
+    "C_Cpp.updateChannel": "Insiders",
+    "C_Cpp.default.includePath": [
+        "/usr/include/c++/9/**",
+        "/usr/include/linux",
+        "${workspaceFolder}/**",
+        "/usr/include/x86_64-linux-gnu/c++/9"
+    ],
+    "clang-tidy.checks": [
+        "modernize-*",
+        "clang-tidy.lintOnSave",
+    ],
+    "clang-tidy.compilerArgs": [
+        "-std=c++2a",
+        "-Wall"],
+
+    // GIT settings
+    "git.autofetch": true,
+    "git.confirmSync": false,
+
+    // Other settings
+    "explorer.sortOrder": "type",
+    "code-runner.runInTerminal": true,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+}

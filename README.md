@@ -3,6 +3,8 @@
 Configuration files I use to setup my development environment on Linux distributions.
 Included are files for vim (text editor), fish (shell environment), oh-my-fish (tool for customizing fish) and VScode (development environment).
 
+![sample-of-shell](<images/sample.png>)
+
 ---
 
 ## Setup
@@ -50,13 +52,17 @@ See the respective README files for help with customizing the plugins.
 
 ---
 
-### vimrc
+## vimrc
 
 The `.vimrc` file is self-documenting. There is one plugin in my rc file that I have not listed above. To enable this plugin search for the `You-Complete-Me` vim plugin and follow its instructions, to enable this plugin you can uncomment lines 20 and 21 in the `.vimrc` file.
 
 The `.vimrc` file should be in your home directory.
 
 ---
+
+## bashrc and bash_aliases
+
+These are my bash config files. I don't use bash much anymore and opt for fish instead which is included below.
 
 ## config
 
