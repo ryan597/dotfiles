@@ -3,7 +3,11 @@
 Configuration files I use to setup my development environment on Linux distributions.
 Included are files for vim (text editor), fish (shell environment), oh-my-fish (tool for customizing fish) and VScode (development environment).
 
-![sample-of-shell](<images/sample.png>)
+Fish shell
+![sample-of-shell](<images/sampleshell.png>)
+
+Vim
+![sample-of-vim](<images/samplevim.png>)
 
 ---
 
