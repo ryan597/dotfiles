@@ -19,7 +19,7 @@ git clone https://github.com/ryan597/dotfiles.git   # https
 After cloning the repository, copy its contents to your home directory.
 
 ```bash
-cp -r ~/dotfiles/* ~/
+cp -r ~/dotfiles/.* ~/
 ls -a ~/  # List the hidden dotfiles
 ```
 
