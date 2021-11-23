@@ -11,7 +11,8 @@ Vim
 
 ---
 
-## Setup
+## Install
+
 Clone the repo with one of the following commands (depending on which you prefer to use for git).
 
 ```bash
@@ -28,6 +29,8 @@ sudo ./install.sh
 
 However a manual install of only the parts you want is also easy. The rest of this document covers this.
 
+## Manual Install
+
 After cloning the repository, copy the dotfiles to your home directory.
 
 ```bash
@@ -41,7 +44,7 @@ You will now see new files and directories: `.vim`, `.vimrc` and `.config`.
 
 ---
 
-## vim
+### vim
 
 The `.vim` directory contains the colorscheme and plugins for setting up my vim environment.
 I use the `one` theme along with a powerline plugin (lightline) and bracket matching plugin (rainbow).
@@ -65,7 +68,7 @@ See the respective README files for help with customizing the plugins.
 
 ---
 
-## vimrc
+### vimrc
 
 The `.vimrc` file is self-documenting. There is one plugin in my rc file that I have not listed above. To enable this plugin search for the `You-Complete-Me` vim plugin and follow its instructions, to enable this plugin you can uncomment lines 20 and 21 in the `.vimrc` file.
 
@@ -73,12 +76,10 @@ The `.vimrc` file should be in your home directory.
 
 ---
 
-## bashrc and bash aliases
+### bashrc and bash aliases
 
 These are my bash config files. I don't use bash much anymore and opt for fish instead which is included below.
 The files are also self-documenting.
-
-## config
 
 ---
 
@@ -151,8 +152,12 @@ Changes will appear when you open a new shell environment.
 
 For some common command line utilities I have install Rust replacements. These are bat (cat), exa (ls) and fdfind (find). I have also created aliases for these inside the `config.fish` file.
 
-[bat](https://github.com/sharkdp/bat)
+- [bat](https://github.com/sharkdp/bat)
+- [exa](https://github.com/ogham/exa)
+- [fd-find](https://github.com/sharkdp/fd)
 
-[exa](https://github.com/ogham/exa)
+```bash
+sudo apt install bat exa fd-find
+```
 
-[fd-find](https://github.com/sharkdp/fd)
+Aliases for these are already included in the `config.fish` file.
