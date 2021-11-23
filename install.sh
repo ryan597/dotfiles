@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo -u $USER {
+sudo -u $USER 
+{
 echo Installer script for dotfiles\n
 echo copying files
 cp -r /home/$SUDO_USER/dotfiles/.config /home/$SUDO_USER/
@@ -21,7 +22,8 @@ echo installing fish and rust commands
 
 apt install fish bat exa fd-find powerline fonts-powerline curl
 
-sudo -u $SUDO_USER {
+sudo -u $SUDO_USER 
+{
 chsh -s /usr/bin/fish
 
 echo installing oh-my-fish and bobthefish theme
