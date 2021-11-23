@@ -1,7 +1,5 @@
 # Dotfiles
 
-## TO-DO: Wirte script for installation; change all git clones to https
-
 Configuration files I use to setup my development environment on Linux distributions.
 Included are files for vim (text editor), fish (shell environment), oh-my-fish (tool for customizing fish) and VScode (development environment).
 
@@ -14,23 +12,32 @@ Vim
 ---
 
 ## Setup
-
 Clone the repo with one of the following commands (depending on which you prefer to use for git).
 
 ```bash
-git clone git@github.com:ryan597/dotfiles.git       # SSH
-git clone https://github.com/ryan597/dotfiles.git   # https
+git clone https://github.com/ryan597/dotfiles.git ~/dotfiles
 ```
 
-After cloning the repository, copy its contents to your home directory.
+The install script supplied with this repository will automatically download and install all files. As some packages are needed from apt, the script must be run as root.
 
 ```bash
-cp -r ~/dotfiles/.* ~/
+cd ~/dotfiles
+chmod +x install.sh
+sudo ./install.sh
+```
+
+However a manual install of only the parts you want is also easy. The rest of this document covers this.
+
+After cloning the repository, copy the dotfiles to your home directory.
+
+```bash
+cp -r ~/dotfiles/.config ~/
+cp -r ~/dotfiles/.vim ~/
+cp ~/dotfiles/.* ~/
 ls -a ~/  # List the hidden dotfiles
 ```
 
 You will now see new files and directories: `.vim`, `.vimrc` and `.config`.
-
 
 ---
 
@@ -41,15 +48,15 @@ I use the `one` theme along with a powerline plugin (lightline) and bracket matc
 The commands to install these are below, see their respective README files for further customization.
 
 ```bash
-git clone git@github.com:itchyny/lightline.vim.git ~/.vim/pack/plugins/start/lightline
-git clone git@github.com:frazrepo/vim-rainbow.git ~/.vim/pack/plugins/start/rainbow
+git clone https://github.com/itchyny/lightline.vim.git ~/.vim/pack/plugins/start/lightline
+git clone https://github.com/frazrepo/vim-rainbow.git ~/.vim/pack/plugins/start/rainbow
 ```
 
 For the powerline plugin to work properly it may help to use a powerline patched font.
 
 ```bash
-git clone git@github.com:powerline/fonts.git ~/Downloads/fonts/powerlinefonts
-chmod x ~/Downloads/fonts/powerlinefonts/install.sh
+git clone https://github.com/powerline/fonts.git ~/Downloads/fonts/powerlinefonts
+chmod +x ~/Downloads/fonts/powerlinefonts/install.sh
 ~/Downloads/fonts/powerlinefonts/install.sh
 ```
 
@@ -66,9 +73,10 @@ The `.vimrc` file should be in your home directory.
 
 ---
 
-## bashrc and bash_aliases
+## bashrc and bash aliases
 
 These are my bash config files. I don't use bash much anymore and opt for fish instead which is included below.
+The files are also self-documenting.
 
 ## config
 
@@ -89,7 +97,7 @@ I use the fish shell environment. This can be installed using apt
 sudo apt install fish
 
 # Change default shell to fish
-chsh -s /bin/fish
+chsh -s /usr/bin/fish
 
 # To change back, replace fish with bash
 chsh -s /bin/bash
@@ -104,6 +112,7 @@ Fish is configured with a `config.fish` file located at `~/.config/fish/config.f
 Oh-My-Fish is a helpful customization tool for the fish shell. To install on debian based platforms use
 
 ```bash
+sudo apt install curl
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 ```
 This will download and install `omf` and launch a new instance of fish.
@@ -124,6 +133,15 @@ In the file `~/.local/share/omf/themes/bobthefish/functions/fish_prompt.fish`
 
 change line 353 to `echo -ns \ue0b0 ' '`
 change line 393 to `echo -ns \ue0b0 ' '`
+
+The following command will work also
+
+```bash
+sed -i '353 c\
+            echo -ns \\\ue0b0 " "' ~/.local/share/omf/themes/bobthefish/functions/fish_prompt.fish
+sed -i '393 c\
+        echo -ns \\\ue0b0 " "' ~/.local/share/omf/themes/bobthefish/functions/fish_prompt.fish
+```
 
 Changes will appear when you open a new shell environment.
 
