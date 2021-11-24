@@ -1,10 +1,16 @@
 #!/bin/bash
 
 echo "---------- Installer script for dotfiles ----------"
+echo "backing up files in home directory"
+mkdir /home/$USER/backups
+mv -r /home/$USER/.config /home/$USER/backups/.config
+mv -r /home/$USER/.vim /home/$USER/backups/.vim
+mv -r /home/$USER/.vimrc /home/$USER/backups/.vimrc
+
 echo "copying files"
-cp -r /home/$USER/dotfiles/.config /home/$USER/
-cp -r /home/$USER/dotfiles/.vim /home/$USER/
-cp /home/$USER/dotfiles/.* /home/$USER/
+cp -r /home/$USER/dotfiles/.config /home/$USER/.config
+cp -r /home/$USER/dotfiles/.vim /home/$USER/.vim
+cp /home/$USER/dotfiles/.vimrc /home/$USER/.vimrc
 
 echo "cloning repositories for vim plugins"
 git clone https://github.com/itchyny/lightline.vim.git /home/$USER/.vim/pack/plugins/start/lightline
