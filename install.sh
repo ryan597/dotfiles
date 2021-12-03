@@ -3,9 +3,9 @@
 echo "---------- Installer script for dotfiles ----------"
 echo "backing up files in home directory"
 mkdir /home/$USER/backups
-mv -r /home/$USER/.config /home/$USER/backups/.config
-mv -r /home/$USER/.vim /home/$USER/backups/.vim
-mv -r /home/$USER/.vimrc /home/$USER/backups/.vimrc
+mv  /home/$USER/.config /home/$USER/backups/.config
+mv  /home/$USER/.vim /home/$USER/backups/.vim
+mv  /home/$USER/.vimrc /home/$USER/backups/.vimrc
 
 echo "copying files"
 cp -r /home/$USER/dotfiles/.config /home/$USER/.config
@@ -24,10 +24,10 @@ chmod +x /home/$USER/dotfiles/fonts/powerlinefonts/install.sh
 echo "installing fish and rust commands"
 echo "Enter password for sudo"
 
-if [ which apt ]; then
+if  which apt ; then
     sudo apt install fish bat exa fd-find powerline fonts-powerline curl
-elif [ which pacman ]; then
-    sudo pacman -Sy fish bat exa fd-find powerline fonts-powerline curl
+elif  which pacman ; then
+    sudo pacman -Sy fish bat exa fd powerline powerline-fonts curl
 else
     echo "COULD NOT INSTALL FISH"
     echo "Exiting..."
