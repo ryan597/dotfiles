@@ -35,7 +35,7 @@ else
 fi
 
 ln -s /usr/bin/fish /bin/fish
-chsh -s /bin/fish
+# chsh -s /bin/fish
 
 echo "installing oh-my-fish and bobthefish theme"
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
