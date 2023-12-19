@@ -26,14 +26,13 @@ if  which apt ; then
     sudo apt install zsh bat exa fd-find fonts-powerline
 elif  which pacman ; then
     echo "using pacman"
-    sudo pacman -Sy zsh bat exa fd powerline powerline-fonts
+    sudo pacman -Sy --needed zsh bat exa fd git base-devel powerline powerline-fonts
     echo "installing yet another yogurt"
-    pacman -S --needed git base-devel
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
+    git clone https://aur.archlinux.org/yay-bin.git
+    cd yay-bin
     makepkg -si
     echo "yay installed... using yay to install powerlevel10k and patched fonts"
-    yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k zsh-theme-powerlevel10k-git
+    yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k zsh-theme-powerlevel10k
     echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 else
     echo "installation failed, make sure apt or pacman is available or edit the install script to work with your package manager"
@@ -41,7 +40,7 @@ else
     exit 1
 fi
 
-echo 'changing shell to zsh'
+echo 'Changing shell to zsh'
 chsh -s /bin/zsh
 
 if  which conda ; then
