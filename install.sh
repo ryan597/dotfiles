@@ -2,16 +2,17 @@
 
 echo "---------- Installer script for dotfiles ----------"
 echo "backing up files in home directory"
-dotfile_dir=$(pwd)
-mkdir "$dotfile_dir/backups"
-mv  "/home/$USER/.bashrc" "$dotfile_dir/backups/"
-mv  "/home/$USER/.bash_aliases" "$dotfile_dir/backups/"
-mv  "/home/$USER/.vimrc" "$dotfile_dir/backups/"
-mv -r "/home/$USER/.vim" "$dotfile_dir/backups/"
-mv -r "/home/$USER/.config" "$dotfile_dir/backups/"
+
+mkdir "backups"
+mv  "/home/$USER/.bashrc" "backups/"
+mv  "/home/$USER/.bash_aliases" "backups/"
+mv  "/home/$USER/.vimrc" "backups/"
+mv -r "/home/$USER/.vim" "backups/"
+mv -r "/home/$USER/.config/Code/User/settings.json" "backups/Code/User/settings.json"
 
 echo "copying files"
-cp -r "$dotfiles/.*" "/home/$USER/"
+cp -r ".zshrc" ".vimrc" ".vim"  "/home/$USER/"
+cp ".config/Code/User/settings.json" "/home/$USER/.config/Code/User/settings.json"
 
 echo "cloning repositories for vim plugins"
 git clone 'https://github.com/itchyny/lightline.vim.git' "/home/$USER/.vim/pack/plugins/start/lightline"
