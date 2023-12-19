@@ -2,54 +2,50 @@
 
 echo "---------- Installer script for dotfiles ----------"
 echo "backing up files in home directory"
-mkdir /home/$USER/backups
-mv  /home/$USER/.config /home/$USER/backups/.config
-mv  /home/$USER/.vim /home/$USER/backups/.vim
-mv  /home/$USER/.vimrc /home/$USER/backups/.vimrc
+dotfile_dir=$(pwd)
+mkdir "$dotfile_dir/backups"
+mv  "/home/$USER/.bashrc" "$dotfile_dir/backups/"
+mv  "/home/$USER/.bash_aliases" "$dotfile_dir/backups/"
+mv  "/home/$USER/.vimrc" "$dotfile_dir/backups/"
+mv -r "/home/$USER/.vim" "$dotfile_dir/backups/"
+mv -r "/home/$USER/.config" "$dotfile_dir/backups/"
 
 echo "copying files"
-cp -r /home/$USER/dotfiles/.config /home/$USER/.config
-cp -r /home/$USER/dotfiles/.vim /home/$USER/.vim
-cp /home/$USER/dotfiles/.vimrc /home/$USER/.vimrc
+cp -r "$dotfiles/.*" "/home/$USER/"
 
 echo "cloning repositories for vim plugins"
-git clone https://github.com/itchyny/lightline.vim.git /home/$USER/.vim/pack/plugins/start/lightline
-git clone https://github.com/frazrepo/vim-rainbow.git /home/$USER/.vim/pack/plugins/start/rainbow
-git clone https://github.com/powerline/fonts.git /home/$USER/dotfiles/fonts/powerlinefonts
+git clone 'https://github.com/itchyny/lightline.vim.git' "/home/$USER/.vim/pack/plugins/start/lightline"
+git clone 'https://github.com/frazrepo/vim-rainbow.git' "/home/$USER/.vim/pack/plugins/start/rainbow"
 
-echo "installing patched fonts"
-chmod +x /home/$USER/dotfiles/fonts/powerlinefonts/install.sh
-/home/$USER/dotfiles/fonts/powerlinefonts/install.sh
-
-echo "installing fish and rust commands"
+echo "installing Zsh, Rust commands, powerlevel10k and yay (for arch based)"
 echo "Enter password for sudo"
 
 if  which apt ; then
-    sudo apt install fish bat exa fd-find powerline fonts-powerline curl
+    echo "using apt"
+    sudo apt install zsh bat exa fd-find fonts-powerline
 elif  which pacman ; then
-    sudo pacman -Sy fish bat exa fd powerline powerline-fonts curl
+    echo "using pacman"
+    sudo pacman -Sy zsh bat exa fd powerline powerline-fonts
+    echo "installing yet another yogurt"
+    pacman -S --needed git base-devel
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+    echo "yay installed... using yay to install powerlevel10k and patched fonts"
+    yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k zsh-theme-powerlevel10k-git
+    echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 else
-    echo "COULD NOT INSTALL FISH"
+    echo "installation failed, make sure apt or pacman is available or edit the install script to work with your package manager"
     echo "Exiting..."
     exit 1
 fi
 
-ln -s /usr/bin/fish /bin/fish
-# chsh -s /bin/fish
+echo 'changing shell to zsh'
+chsh -s /bin/zsh
 
-echo "installing oh-my-fish and bobthefish theme"
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-omf install bobthefish
-
-echo replacing segment seperators in prompt
-sed -i '353 c\
-            echo -ns \\\ue0b0 " "' /home/$USER/.local/share/omf/themes/bobthefish/functions/fish_prompt.fish
-sed -i '393 c\
-        echo -ns \\\ue0b0 " "' /home/$USER/.local/share/omf/themes/bobthefish/functions/fish_prompt.fish
-
-if [ which conda ]; then
-    echo initialising conda for fish
-    conda init fish
+if  which conda ; then
+    echo initialising conda
+    conda init zsh
 fi
 
 echo "---------- Install finished ----------"
