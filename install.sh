@@ -34,6 +34,8 @@ elif  which pacman ; then
     echo "yay installed... using yay to install powerlevel10k and patched fonts"
     yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k zsh-theme-powerlevel10k
     echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+    yay -Y --gendb
+    yay -Y --devel --diffmenu=false --save
 else
     echo "installation failed, make sure apt or pacman is available or edit the install script to work with your package manager"
     echo "Exiting..."
