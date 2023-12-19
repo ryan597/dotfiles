@@ -11,7 +11,7 @@ mv -r "/home/$USER/.vim" "backups/"
 mv -r "/home/$USER/.config/Code/User/settings.json" "backups/Code/User/settings.json"
 
 echo "copying files"
-cp -r ".zshrc" ".vimrc" ".vim"  "/home/$USER/"
+cp -r ".zshrc" ".vimrc" ".vim" ".p10k.zsh"  "/home/$USER/"
 cp ".config/Code/User/settings.json" "/home/$USER/.config/Code/User/settings.json"
 
 echo "cloning repositories for vim plugins"
