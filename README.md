@@ -1,10 +1,6 @@
 # Dotfiles
 
 Configuration files I use to setup my development environment on Linux distributions.
-Included are files for vim (text editor), fish (shell environment), oh-my-fish (tool for customizing fish) and VScode (development environment).
-
-Fish shell
-![sample-of-shell](<images/sampleshell.png>)
 
 Vim
 ![sample-of-vim](<images/samplevim.png>)
@@ -24,12 +20,11 @@ The install script supplied with this repository will automatically download and
 ```bash
 cd ~/dotfiles
 chmod +x install.sh
-sudo ./install.sh
+./install.sh
 ```
 
-However a manual install of only the parts you want is also easy. The rest of this document covers this.
-
-## Manual Install
+<details>
+<summary>extra</summary>
 
 After cloning the repository, copy the dotfiles to your home directory.
 
@@ -161,3 +156,5 @@ sudo apt install bat exa fd-find
 ```
 
 Aliases for these are already included in the `config.fish` file.
+
+</details>
