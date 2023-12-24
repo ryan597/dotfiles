@@ -12,7 +12,7 @@ mv  "/home/$USER/.config/Code/User/settings.json" "backups/Code/User/settings.js
 
 echo "copying files"
 cp -r ".zshrc" ".vimrc" ".vim" ".p10k.zsh"  "/home/$USER/"
-cp ".config/Code/User/settings.json" "/home/$USER/.config/Code/User/settings.json"
+cp "settings.json" "/home/$USER/.config/Code/User/settings.json"
 
 echo "cloning repositories for vim plugins"
 git clone 'https://github.com/itchyny/lightline.vim.git' "/home/$USER/.vim/pack/plugins/start/lightline"
@@ -53,6 +53,6 @@ fi
 echo "installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-echo "source ~/.zshrc-pre-oh-my-zsh" >> ~/.zshrc
+echo "source ~/.zshrc.pre-oh-my-zsh" >> ~/.zshrc
 
 echo "---------- Install finished ----------"
