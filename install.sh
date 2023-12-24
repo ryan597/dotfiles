@@ -7,8 +7,8 @@ mkdir "backups"
 mv  "/home/$USER/.bashrc" "backups/"
 mv  "/home/$USER/.bash_aliases" "backups/"
 mv  "/home/$USER/.vimrc" "backups/"
-mv -r "/home/$USER/.vim" "backups/"
-mv -r "/home/$USER/.config/Code/User/settings.json" "backups/Code/User/settings.json"
+mv  "/home/$USER/.vim" "backups/"
+mv  "/home/$USER/.config/Code/User/settings.json" "backups/Code/User/settings.json"
 
 echo "copying files"
 cp -r ".zshrc" ".vimrc" ".vim" ".p10k.zsh"  "/home/$USER/"
@@ -49,5 +49,10 @@ if  which conda ; then
     echo initialising conda
     conda init zsh
 fi
+
+echo "installing oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+echo "source ~/.zshrc-pre-oh-my-zsh" >> ~/.zshrc
 
 echo "---------- Install finished ----------"
