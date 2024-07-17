@@ -23,13 +23,14 @@ if  which apt ; then
 elif which pacman ; then
     sudo pacman -Sy --noconfirm --needed firefox zsh bat eza fd git base-devel powerline powerline-fonts i3-wm i3lock i3status-rust nitrogen nautilus
     echo "installing yet another yogurt"
-    git clone https://aur.archlinux.org/yay-bin.git
-    cd yay-bin
+    git clone https://aur.archlinux.org/yay-bin.git $HOME/Downloads
+    cd $HOME/Downloads/yay-bin
     makepkg -si
     echo "yay installed... installing from AUR"
     yay -S --noconfirm --needed ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin spotify
     yay -Y --gendb
     yay -Y --devel --diffmenu=false --save
+    cd $HOME/dotfiles
 else
     echo "installation failed, make sure apt or pacman is available or edit the install script to work with your package manager"
     echo "Exiting..."
@@ -70,7 +71,7 @@ if [ $configure_git != n ] ; then
 # Please adapt and uncomment the following lines:
     name = $git_name
     email = $git_email
-"
+" > $HOME/.gitconfig
 fi
 
 echo "---------- Install finished ----------"
