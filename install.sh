@@ -21,13 +21,13 @@ echo "Enter password for sudo: "
 if  which apt ; then
     sudo apt install zsh bat exa fd-find fonts-powerline
 elif which pacman ; then
-    sudo pacman -Sy --noconfirm zsh bat eza fd git base-devel powerline powerline-fonts
+    sudo pacman -Sy --noconfirm --needed firefox zsh bat eza fd git base-devel powerline powerline-fonts i3-wm i3lock i3status-rust nitrogen nautilus
     echo "installing yet another yogurt"
     git clone https://aur.archlinux.org/yay-bin.git
     cd yay-bin
     makepkg -si
-    echo "yay installed... install patched fonts, vscode"
-    yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin
+    echo "yay installed... installing from AUR"
+    yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin spotify
     yay -Y --gendb
     yay -Y --devel --diffmenu=false --save
 else
@@ -51,6 +51,12 @@ chsh -s /bin/zsh
 if  which conda ; then
     echo initialising conda
     conda init zsh
+else
+    mkdir -p $HOME/miniconda3
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+    bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+    rm -rf $HOME/miniconda3/miniconda.sh
+    $HOME/miniconda3/bin/conda init zsh
 fi
 
 
