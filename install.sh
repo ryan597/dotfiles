@@ -23,7 +23,7 @@ if  which apt ; then
 elif which pacman ; then
     sudo pacman -Sy --noconfirm --needed firefox zsh bat eza fd git base-devel powerline powerline-fonts i3-wm i3lock i3status-rust nitrogen nautilus
     echo "installing yet another yogurt"
-    git clone https://aur.archlinux.org/yay-bin.git $HOME/Downloads
+    git clone https://aur.archlinux.org/yay-bin.git $HOME/Downloads/yay-bin
     cd $HOME/Downloads/yay-bin
     makepkg -si
     echo "yay installed... installing from AUR"
