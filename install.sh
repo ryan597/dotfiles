@@ -27,7 +27,7 @@ elif which pacman ; then
     cd yay-bin
     makepkg -si
     echo "yay installed... installing from AUR"
-    yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin spotify
+    yay -S --noconfirm --needed ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin spotify
     yay -Y --gendb
     yay -Y --devel --diffmenu=false --save
 else
