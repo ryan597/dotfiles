@@ -11,10 +11,7 @@
     "editor.acceptSuggestionOnEnter": "off",
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": "active",
-    "editor.rulers": [
-        79,
-        120
-    ],
+    "editor.rulers": [79, 120],
     "files.trimTrailingWhitespace": true,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.sideBar.location": "right",
@@ -28,14 +25,11 @@
         "--max-line-length=120",
         "--ignore=E127,E128,E501"
     ],
-    "flake8.interpreter": [
-        "${env:HOME}/.conda/envs/rlwave/bin/python3.10"
-    ],
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "left"
     },
-    "jupyter.askForKernelRestart": false,
+    "jupyter.askForKernelRestart": true,
 
     // Markdown settings
     "markdownlint.config": {
@@ -66,21 +60,22 @@
         "/usr/include/c++/9/**",
         "/usr/include/linux",
         "${workspaceFolder}/**",
-        "/usr/include/x86_64-linux-gnu/c++/9",
-        "/usr/include/opencv4",
-        "/usr/include/pcl-1.12"
     ],
     "clang-tidy.checks": [
-        "modernize-*",
-        "clang-tidy.lintOnSave",
-    ],
+        "*",
+        "-abseil-*",
+        "-altera-*",
+        "-android-*",
+        "-fuchsia-*",
+        "-google-*",
+        "-llvm*"],
     "clang-tidy.compilerArgs": [
         "-std=c++2a",
         "-Wall",
-        "-I/usr/include/opencv4",
-        "-I./include",
         "-I${workspaceFolder}/**"
     ],
+    "clang-format.style": "LLVM",
+    "clang-format.language.cpp.enable": true,
     "cmake.options.statusBarVisibility": "visible",
     "cmake.automaticReconfigure": false,
 
@@ -94,18 +89,11 @@
     "workbench.startupEditor": "none",
     "security.workspace.trust.untrustedFiles": "open",
     "workbench.colorCustomizations": {},
-    "editor.largeFileOptimizations": false,
     "workbench.colorTheme": "Ambiance [beta]",
-    "debug.onTaskErrors": "showErrors",
     "terminal.integrated.bellDuration": 100,
     "terminal.integrated.fontFamily": "'MesloLGS NF'",
     "terminal.integrated.fontSize": 12,
-    "git.ignoreLegacyWarning": true,
-    "terminal.integrated.enableMultiLinePasteWarning": false,
     "diffEditor.ignoreTrimWhitespace": false,
-    "[python]": {
-        "editor.formatOnType": true
-    },
     "extensions.ignoreRecommendations": true,
     "code-runner.saveFileBeforeRun": true,
     "terminal.integrated.profiles.windows": {
@@ -137,7 +125,5 @@
     "notebook.output.scrolling": true,
     "terminal.integrated.scrollback": 10000,
     "cmake.showOptionsMovedNotification": false,
-    "[cpp]": {
-        "editor.defaultFormatter": "xaver.clang-format"
-    },
+    "explorer.confirmDelete": false,
 }

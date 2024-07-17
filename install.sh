@@ -3,37 +3,31 @@
 echo "---------- Installer script for dotfiles ----------"
 echo "backing up files in home directory"
 
-mkdir "backups"
-mv  "/home/$USER/.bashrc" "backups/"
-mv  "/home/$USER/.bash_aliases" "backups/"
-mv  "/home/$USER/.vimrc" "backups/"
-mv  "/home/$USER/.vim" "backups/"
-mv  "/home/$USER/.config/Code/User/settings.json" "backups/Code/User/settings.json"
-
-echo "copying files"
-cp -r ".zshrc" ".vimrc" ".vim" ".p10k.zsh"  "/home/$USER/"
-cp "settings.json" "/home/$USER/.config/Code/User/settings.json"
+# Backups and copying files
+mkdir "backup_dotfiles"
+mv "$HOME/.vimrc" "backup_dotfiles/"
+mv "$HOME/.vim" "backup_dotfiles/"
+mv "$HOME/.config" "backup_dotfiles/.config"
 
 echo "cloning repositories for vim plugins"
 git clone 'https://github.com/itchyny/lightline.vim.git' "/home/$USER/.vim/pack/plugins/start/lightline"
 git clone 'https://github.com/frazrepo/vim-rainbow.git' "/home/$USER/.vim/pack/plugins/start/rainbow"
 
-echo "installing Zsh, Rust commands, powerlevel10k and yay (for arch based)"
-echo "Enter password for sudo"
+
+# Installing packages
+echo "installing Zsh, Rust commands, powerlevel10k and yay"
+echo "Enter password for sudo: "
 
 if  which apt ; then
-    echo "using apt"
     sudo apt install zsh bat exa fd-find fonts-powerline
-elif  which pacman ; then
-    echo "using pacman"
-    sudo pacman -Sy --needed zsh bat exa fd git base-devel powerline powerline-fonts
+elif which pacman ; then
+    sudo pacman -Sy --noconfirm zsh bat eza fd git base-devel powerline powerline-fonts
     echo "installing yet another yogurt"
     git clone https://aur.archlinux.org/yay-bin.git
     cd yay-bin
     makepkg -si
-    echo "yay installed... using yay to install powerlevel10k and patched fonts"
-    yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k zsh-theme-powerlevel10k
-    echo 'source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+    echo "yay installed... install patched fonts, vscode"
+    yay -S --noconfirm ttf-meslo-nerd-font-powerlevel10k visual-studio-code-bin
     yay -Y --gendb
     yay -Y --devel --diffmenu=false --save
 else
@@ -42,7 +36,16 @@ else
     exit 1
 fi
 
-echo 'Changing shell to zsh'
+echo "installing oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# echo "source ~/.zshrc.pre-oh-my-zsh" >> ~/.zshrc
+
+echo "copying files"  # copying files after all installs to ensure they aren't overwritten by install processes
+cp -r ".zshrc" ".vimrc" ".vim" ".p10k.zsh" ".config" "$HOME"
+
+
+# Configuring shells
+echo 'Changing preferred shell to zsh'
 chsh -s /bin/zsh
 
 if  which conda ; then
@@ -50,9 +53,19 @@ if  which conda ; then
     conda init zsh
 fi
 
-echo "installing oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-echo "source ~/.zshrc.pre-oh-my-zsh" >> ~/.zshrc
+# Git configuration
+read -n1 -p "Setup git config: [y]/n" configure_git
+if [ $configure_git != n ] ; then
+    read -p "name: " git_name
+    read -p "email: " git_email
+    echo "# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+    name = $git_name
+    email = $git_email
+"
+fi
 
 echo "---------- Install finished ----------"
+exit 0
