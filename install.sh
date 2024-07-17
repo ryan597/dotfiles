@@ -10,12 +10,12 @@ mv "$HOME/.vim" "backup_dotfiles/"
 mv "$HOME/.config" "backup_dotfiles/.config"
 
 echo "cloning repositories for vim plugins"
-git clone 'https://github.com/itchyny/lightline.vim.git' "/home/$USER/.vim/pack/plugins/start/lightline"
-git clone 'https://github.com/frazrepo/vim-rainbow.git' "/home/$USER/.vim/pack/plugins/start/rainbow"
+git clone 'https://github.com/itchyny/lightline.vim.git' "$HOME/.vim/pack/plugins/start/lightline"
+git clone 'https://github.com/frazrepo/vim-rainbow.git' "$HOME/.vim/pack/plugins/start/rainbow"
 
 
 # Installing packages
-echo "installing Zsh, Rust commands, powerlevel10k and yay"
+echo "installing packages"
 echo "Enter password for sudo: "
 
 if  which apt ; then
