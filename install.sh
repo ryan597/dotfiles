@@ -34,7 +34,7 @@ elif which pacman ; then
 else
     echo "installation failed, make sure apt or pacman is available or edit the install script to work with your package manager"
     echo "Exiting..."
-    exit 1
+    exit
 fi
 
 echo "installing oh-my-zsh"
@@ -64,7 +64,7 @@ fi
 # Git configuration
 read -n1 -p "Setup git config: [y]/n" configure_git
 if [ $configure_git != n ] ; then
-    read -p "name: " git_name
+    read -p "\nname: " git_name
     read -p "email: " git_email
     echo "# This is Git's per-user configuration file.
 [user]
@@ -75,4 +75,3 @@ if [ $configure_git != n ] ; then
 fi
 
 echo "---------- Install finished ----------"
-exit 0
