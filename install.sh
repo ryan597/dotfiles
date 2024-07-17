@@ -74,4 +74,4 @@ if [ $configure_git != n ] ; then
 " > $HOME/.gitconfig
 fi
 
-echo "---------- Install finished ----------"
+echo "\n---------- Install finished ----------"
