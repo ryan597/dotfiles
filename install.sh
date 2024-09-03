@@ -38,8 +38,14 @@ else
 fi
 
 echo "installing oh-my-zsh"
+read -n1 -p "type 'exit' to get back to install process after oh-my-zsh screen appears. \nPress any key to continue..." tmp
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # echo "source ~/.zshrc.pre-oh-my-zsh" >> ~/.zshrc
+
+echo "copying oh-my-zsh plugins"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo "copying files"  # copying files after all installs to ensure they aren't overwritten by install processes
 cp -r ".zshrc" ".vimrc" ".vim" ".p10k.zsh" ".config" "$HOME"
