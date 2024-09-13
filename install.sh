@@ -50,8 +50,8 @@ fi
 
 echo "checking for oh-my-zsh"
 if [ ! -e $HOME/.oh-my-zsh ]; then
-    read -n1 -p "type 'exit' to get back to install process after oh-my-zsh screen appears. \nPress any key to continue..." tmp
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    wget "https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh" -O omz_install.sh
+    sh omz_install.sh
     # echo "source ~/.zshrc.pre-oh-my-zsh" >> ~/.zshrc
 
     echo "copying oh-my-zsh plugins"
