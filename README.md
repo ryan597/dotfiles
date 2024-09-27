@@ -3,7 +3,7 @@
 Configuration files I use to setup my Linux distros.
 
 Zsh
-![sample-of-shell](<image/sampleshell.png>)
+![sample-of-shell](<images/sampleshell.png>)
 
 NeoVim
 ![sample-of-vim](<images/samplevim.png>)
