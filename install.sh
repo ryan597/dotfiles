@@ -9,10 +9,11 @@ sudo -v
 mkdir "backups"
 if (($? == 0)); then # dont overwrite an existing backup
     echo "backing up current files"
-    mv "$HOME/.config/i3/" "backups/.config/i3"
+    mkdir "backups/.config"
+    mv "$HOME/.config/i3/" "backups/.config/i3/"
     mv "$HOME/.config/nvim/" "backups/.config/nvim/"
     mv "$HOME/.zshrc" "backups/.zshrc"
-    cp /etc/hosts "backup/hosts"
+    cp /etc/hosts "backups/hosts"
 fi
 
 ############################################################
