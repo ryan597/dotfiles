@@ -29,7 +29,7 @@ echo "installing packages"
 if which apt; then
     sudo apt install zsh bat exa fd-find fonts-powerline alacritty neovim
 elif which pacman; then
-    sudo pacman -Sy --noconfirm --needed \
+    sudo pacman -S --noconfirm --needed \
         alacritty \
         base-devel \
         bat \
@@ -85,8 +85,8 @@ fi
 echo "linking to config files"
 ln -s "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
 ln -s "$HOME/dotfiles/.p10k.zsh" "$HOME/.p10k.zsh"
-ln -s "$HOME/dotfiles/.config/i3/" "$HOME/.config/i3/"
-ln -s "$HOME/dotfiles/.config/nvim/" "$HOME/.config/nvim/"
+ln -s "$HOME/dotfiles/.config/i3" "$HOME/.config/i3"
+ln -s "$HOME/dotfiles/.config/nvim" "$HOME/.config/nvim"
 
 ############################################################
 # Configuring shells
