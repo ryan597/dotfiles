@@ -88,6 +88,7 @@ ln -s "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
 ln -s "$HOME/dotfiles/.p10k.zsh" "$HOME/.p10k.zsh"
 ln -s "$HOME/dotfiles/.config/i3" "$HOME/.config/i3"
 ln -s "$HOME/dotfiles/.config/nvim" "$HOME/.config/nvim"
+ln -s "$HOME/dotfiles/.config/i3status-rust" "$HOME/.config/i3status-rust"
 
 ############################################################
 # Configuring shells
