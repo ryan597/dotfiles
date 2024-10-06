@@ -33,6 +33,7 @@ elif which pacman; then
         alacritty \
         base-devel \
         bat \
+        dmenu \
         eza \
         fd \
         firefox \
