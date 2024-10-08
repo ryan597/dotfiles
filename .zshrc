@@ -110,18 +110,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Aliases
-alias duh="du -sh * | sort -h -r"
-alias gh="history|grep"
-alias ccreate="conda env create -f environment.yml"
-alias cexport="conda env export --no-builds  > environment.yml"
-alias ls="eza -a"
-alias lsa="eza -la"
-alias cat="bat -pp"
-alias gits="git status"
-alias gp="git pull"
-alias gc="git add . && git commit"
-
+source ~/.zsh_alias
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
