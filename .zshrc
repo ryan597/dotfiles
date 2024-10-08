@@ -118,6 +118,9 @@ alias cexport="conda env export --no-builds  > environment.yml"
 alias ls="eza -a"
 alias lsa="eza -la"
 alias cat="bat -pp"
+alias gits="git status"
+alias gp="git pull"
+alias gc="git add . && git commit"
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
